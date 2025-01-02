@@ -1,0 +1,30 @@
+﻿@model IEnumerable<DeansOfficeManagement.Models.Request>
+
+@{
+    ViewData["Title"] = "Moje Wnioski";
+}
+
+<h2>Moje Wnioski</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Rodzaj Wniosku</th>
+            <th>Opis</th>
+            <th>Data Złożenia</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var request in Model)
+
+        {
+            <tr>
+                <td>@request.RequestType</td>
+                <td>@request.Description</td>
+                <td>@request.DateSubmitted.ToShortDateString()</td>
+                <td>@request.Status</td>
+            </tr>
+        }
+    </tbody>
+</table>

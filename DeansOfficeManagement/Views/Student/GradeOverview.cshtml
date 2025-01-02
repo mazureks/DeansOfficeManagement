@@ -1,0 +1,32 @@
+﻿@model IEnumerable<DeansOfficeManagement.Models.ViewModels.StudentGradeViewModel>
+
+@{
+    ViewBag.Title = "Podgląd ocen";
+}
+
+<h2>Moje Oceny</h2>
+
+<table class="table table-bordered mt-4">
+    <thead>
+        <tr>
+            <th>Kurs</th>
+            <th>Ocena</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var grade in Model)
+
+        {
+            <tr>
+                <td>@grade.CourseName</td>
+                <td>@grade.GradeValue</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (!Model.Any())
+
+{
+    <p class="text-muted">Nie otrzymałeś jeszcze żadnych ocen.</p>
+}

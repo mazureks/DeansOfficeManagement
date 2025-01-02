@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Course>
+
+@{
+    ViewData["Title"] = "Moje Kursy";
+}
+
+<h2>Moje Kursy</h2>
+
+@if (!Model.Any())
+
+{
+    <p>Nie przypisano jeszcze żadnych kursów.</p>
+}
+
+else
+
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID Kursu</th>
+                <th>Nazwa Kursu</th>
+                <th>Punkty ECTS</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var course in Model)
+
+            {
+                <tr>
+                    <td>@course.CourseId</td>
+                    <td>@course.CourseName</td>
+                    <td>@course.Credits</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

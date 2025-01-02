@@ -1,0 +1,48 @@
+﻿@model DeansOfficeManagement.Models.ViewModels.AssignRolesViewModel
+
+<h2>Przypisz role</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["SuccessMessage"]
+    </div>
+}
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+<form asp-action="AssignRoles" method="post">
+    <!-- Przewijalna lista użytkowników -->
+    <div class="form-group">
+        <label for="Users">Wybierz użytkownika</label>
+        <div style="max-height: 300px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; border-radius: 5px;">
+            <ul class="list-unstyled">
+                @foreach (var user in Model.Users)
+                {
+                    <li>
+                        <input type="radio" name="UserId" value="@user.Id" id="user-@user.Id" />
+                        <label for="user-@user.Id">@user.FirstName @user.LastName (@user.Email)</label>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+
+    <!-- Wybór ról -->
+    <div class="form-group">
+        <label>Wybierz role</label>
+        @foreach (var role in Model.AvailableRoles)
+        {
+            <div class="form-check">
+                <input type="checkbox" name="SelectedRoles" value="@role" class="form-check-input" />
+                <label class="form-check-label">@role</label>
+            </div>
+        }
+    </div>
+
+    <button type="submit" class="btn btn-primary">Przypisz role</button>
+</form>

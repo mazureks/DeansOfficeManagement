@@ -1,0 +1,40 @@
+﻿@model Course
+@{
+    ViewBag.Title = "Utwórz kurs";
+}
+
+<h2>Utwórz kurs</h2>
+
+<form asp-action="CreateCourse" method="post">
+    <div class="form-group">
+        <label asp-for="CourseName">Nazwa kursu</label>
+        <input asp-for="CourseName" class="form-control" />
+        <span asp-validation-for="CourseName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Credits">Punkty ECTS</label>
+        <input asp-for="Credits" type="number" class="form-control" />
+        <span asp-validation-for="Credits" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label>Przypisz wykładowcę</label>
+        <select asp-for="LecturerId" asp-items="ViewBag.Lecturers" class="form-control">
+            <option value="">Wybierz wykładowcę</option>
+        </select>
+
+        @*<select asp-for="LecturerId" class="form-control" asp-items="@(new SelectList(ViewBag.Lecturers, "Id", "FirstName"))">
+            <option value="">Wybierz wykładowcę</option>
+        </select> *@
+        <span asp-validation-for="LecturerId" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Utwórz kurs</button>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
