@@ -1,3 +1,4 @@
-Usuniêto ca³kowicie wstêpne uzupe³nienie danych:
-u¿ytkowników, wniosków, ocen przedmiotów itp.
----------------------------------------------------
+UsuniÄ™to caÅ‚kowicie wstÄ™pne uzupeÅ‚nienie danych:
+uÅ¼ytkownikÃ³w, wnioskÃ³w, ocen przedmiotÃ³w itp.
+Dodano funkcjonalnoÅ›Ä‡ statystyk (dziekan)
+Dodano funkcjonalnoÅ›Ä‡ zmiany hasÅ‚Ä…
