@@ -1,0 +1,136 @@
+﻿@{
+    ViewData["Title"] = "Panel administracyjny";
+}
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .admin-header {
+            background-color: #343a40;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .admin-title {
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        .card {
+            border: none;
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+
+            .card:hover {
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            }
+
+        .icon {
+            font-size: 2.5rem;
+            color: #007bff;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="admin-header">
+        <div class="container">
+            <h1 class="admin-title">Panel administracyjny</h1>
+            <p class="lead">Witamy w panelu zarządzania. Proste zarządzanie studentami, kursami, rejestracjami i wnioskami.</p>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <div class="row">
+            <!-- Dodawanie i edycja studentów -->
+            <div class="col-md-4 mb-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <i class="icon fas fa-user-graduate"></i>
+                        <h5 class="card-title mt-3">Zarządzaj studentami</h5>
+                        <p class="card-text">Dodawaj, edytuj i zarządzaj informacjami o studentach w systemie.</p>
+                        <a href="@Url.Action("Students", "Admin")" class="btn btn-primary">Przejdź do studentów</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tworzenie kursów i przypisywanie wykładowców -->
+            <div class="col-md-4 mb-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <i class="icon fas fa-chalkboard-teacher"></i>
+                        <h5 class="card-title mt-3">Zarządzaj kursami</h5>
+                        <p class="card-text">Twórz nowe kursy i przypisuj je wykładowcom.</p>
+                        <a href="@Url.Action("Courses", "Admin")" class="btn btn-primary">Przejdź do kursów</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Zarządzanie rejestracjami kursów studentów -->
+            <div class="col-md-4 mb-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <i class="icon fas fa-book"></i>
+                        <h5 class="card-title mt-3">Rejestracje na kursy</h5>
+                        <p class="card-text">Zarządzaj rejestracjami kursów studentów i aktualizacjami.</p>
+                        <a href="@Url.Action("CourseRegistrations", "Admin")" class="btn btn-primary">Przejdź do rejestracji</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Przeglądaj i oceniaj wnioski studentów -->
+            <div class="col-md-4 mb-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <i class="icon fas fa-envelope"></i>
+                        <h5 class="card-title mt-3">Wnioski studentów</h5>
+                        <p class="card-text">Przeglądaj i oceniaj wnioski zgłoszone przez studentów.</p>
+                        <a href="@Url.Action("Requests", "Admin")" class="btn btn-primary">Zobacz wnioski</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Przypisywanie ról -->
+            <div class="col-md-4 mb-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <i class="icon fas fa-user-cog"></i>
+                        <h5 class="card-title mt-3">Przypisz role</h5>
+                        <p class="card-text">Zarządzaj i przypisuj role użytkownikom w systemie.</p>
+                        <a href="@Url.Action("AssignRoles", "Admin")" class="btn btn-primary">Przejdź do przypisywania ról</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Raporty -->
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">Raporty</h5>
+                        <p class="card-text">Przeglądaj szczegółowe raporty i statystyki.</p>
+                        <a asp-action="Statistics" asp-controller="Admin" class="btn btn-primary">Zobacz raporty</a>
+                    </div>
+                </div>
+            </div>
+
+
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+﻿@model IEnumerable<DeansOfficeManagement.Models.Course>
+@{
+    ViewData["Title"] = "Rejestracja na Kursy";
+}
+
+<h2>Rejestracja na Kursy</h2>
+
+@if (TempData["SuccessMessage"] != null)
+
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+@if (TempData["ErrorMessage"] != null)
+
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Nazwa Kursu</th>
+            <th>Wykładowca</th>
+            <th>Punkty ECTS</th>
+            <th>Akcja</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var course in Model)
+
+        {
+            <tr>
+                <td>@course.CourseName</td>
+                <td>@(course.Lecturer != null ? course.Lecturer.FirstName + " " + course.Lecturer.LastName : "")</td>
+             
+                <td>@course.Credits</td>
+                <td>
+                    <form asp-action="RegisterCourse" asp-controller="Student" method="post">
+                        <input type="hidden" name="courseId" value="@course.CourseId" />
+                        <button type="submit" class="btn btn-primary">Zarejestruj się</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Course>
+@{
+    ViewBag.Title = "Kursy";
+}
+
+<h2>Kursy</h2>
+
+<!-- Przycisk do dodania nowego kursu -->
+<div class="mb-3">
+    <a asp-action="CreateCourse" class="btn btn-success">Dodaj nowy kurs</a>
+</div>
+
+<!-- Tabela kursów -->
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nazwa kursu</th>
+            <th>Punkty ECTS</th>
+            <th>Wykładowca</th>
+            <th>Akcje</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var course in Model)
+        {
+            <tr>
+                <td>@course.CourseName</td>
+                <td>@course.Credits</td>
+                <td>@(course.Lecturer != null ? course.Lecturer.FirstName + ' ' + course.Lecturer.LastName : "Nieprzypisany")</td>
+                <td>
+                    <!-- Przycisk edycji -->
+                    <a asp-action="EditCourse" asp-route-id="@course.CourseId" class="btn btn-primary btn-sm">Edytuj</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

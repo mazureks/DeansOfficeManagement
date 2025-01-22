@@ -1,0 +1,81 @@
+﻿@{
+    ViewBag.Title = "Strona Główna - System Zarządzania Dziekanatem";
+}
+
+<!-- Sekcja Bohaterska -->
+<div class="container-fluid bg-primary text-white text-center p-5">
+    <h1>Witamy w Systemie Zarządzania Dziekanatem</h1>
+    <p class="lead">Zarządzaj studentami, kursami i ocenami z łatwością!</p>
+    <a href="#features" class="btn btn-light btn-lg mt-3">Dowiedz się więcej</a>
+</div>
+
+<!-- Sekcja Funkcjonalności -->
+<div id="features" class="container mt-5">
+    <h2 class="text-center mb-5">Główne Funkcjonalności</h2>
+    <div class="row">
+        <div class="col-md-4 text-center">
+            <i class="fas fa-user-graduate fa-3x text-primary"></i>
+            <h4 class="mt-3">Portal Studenta</h4>
+            <p>Studenci mogą przeglądać kursy, składać wnioski, sprawdzać oceny i zarządzać rejestracjami za pomocą przyjaznego interfejsu.</p>
+        </div>
+        <div class="col-md-4 text-center">
+            <i class="fas fa-chalkboard-teacher fa-3x text-primary"></i>
+            <h4 class="mt-3">Panel Wykładowcy</h4>
+            <p>Wykładowcy mogą zarządzać kursami, przeglądać zgłoszenia studentów, przydzielać oceny i śledzić aktywności kursowe.</p>
+        </div>
+        <div class="col-md-4 text-center">
+            <i class="fas fa-user-shield fa-3x text-primary"></i>
+            <h4 class="mt-3">Panel Administracyjny</h4>
+            <p>Pracownicy dziekanatu mogą zarządzać studentami, przypisywać kursy wykładowcom oraz przeglądać wnioski studentów.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Sekcja Call to Action -->
+<div class="container text-center mt-5 mb-5">
+    <h2>Rozpocznij pracę</h2>
+    <p class="lead">Zaloguj się, aby uzyskać dostęp do swojego spersonalizowanego panelu i rozpocząć pracę.</p>
+    <a asp-area="" asp-controller="Account" asp-action="Login" class="btn btn-primary btn-lg">Zaloguj się</a>
+</div>
+
+<!-- Sekcja O Systemie -->
+<div class="container mt-5 mb-5">
+    <h2 class="text-center mb-4">O Systemie</h2>
+    <p class="text-center">
+        System Zarządzania Dziekanatem został zaprojektowany, aby usprawnić zadania administracyjne w instytucjach akademickich. Dzięki dedykowanym portalom dla studentów, wykładowców i personelu administracyjnego, zarządzanie kursami, ocenami i wnioskami studentów jeszcze nigdy nie było tak łatwe.
+    </p>
+</div>
+
+<!-- Sekcja Kontaktowa -->
+<div class="container mt-5 mb-5 text-center">
+    <h2>Skontaktuj się z nami</h2>
+    <p>Jeśli masz pytania lub potrzebujesz wsparcia, skontaktuj się z dziekanatem pod adresem <a href="mailto:support@deanoffice.com">support@deanoffice.com</a>.</p>
+</div>
+
+<!-- Stopka -->
+<footer class="bg-dark text-white text-center p-3">
+    <p>&copy; 2024 System Zarządzania Dziekanatem. Wszelkie prawa zastrzeżone.</p>
+</footer>
+
+<!-- Opcjonalne Style CSS -->
+<style>
+    .container-fluid.bg-primary {
+        background-image: linear-gradient(to right, #007bff, #00bfff);
+    }
+
+    h1, h2 {
+        font-weight: bold;
+    }
+
+    .fa-3x {
+        color: #007bff;
+    }
+
+    .btn-lg {
+        font-size: 1.25rem;
+    }
+
+    .container-fluid, .container {
+        max-width: 1200px;
+    }
+</style>

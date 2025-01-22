@@ -1,0 +1,95 @@
+﻿@model DeansOfficeManagement.Models.ViewModels.LecturerDashboardViewModel
+@{
+    ViewBag.Title = "Panel Wykładowcy";
+}
+
+<h1>Witamy w panelu wykładowcy !</h1>
+
+<div class="container mt-4">
+    <div class="row">
+
+        <!-- Sekcja Przypisanych Kursów -->
+        <div class="col-md-8">
+            <h3>Moje Kursy</h3>
+            <div class="row">
+                @foreach (var course in Model.Courses)
+
+                {
+                    <div class="col-md-6 mb-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">@course.CourseName</h5>
+                                <p class="card-text">Punkty ECTS: @course.Credits</p>
+                                <p class="card-text">Zapisani Studenci: @course.CourseRegistrations.Count</p>
+                                <a href="@Url.Action("GradeInput", "Lecturer", new { courseId = course.CourseId })" class="btn btn-primary">Wprowadź Oceny</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <!-- Sekcja Szybkich Akcji -->
+        <div class="col-md-4">
+            <h3>Szybkie Akcje</h3>
+            <div class="list-group">
+                <a asp-action="Courses" class="list-group-item list-group-item-action">Moje Kursy</a>
+            </div>
+        </div>
+    </div>
+
+    @*@<div class="row mt-4">
+        <!-- Sekcja Ostatniej Aktywności -->
+        <div class="col-md-12">
+            <h3>Ostatnia Aktywność</h3>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Kurs</th>
+                            <th>Aktywność</th>
+                            <th>Data</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Przykładowe dane; zastąp rzeczywistą aktywnością -->
+                        <tr>
+                            <td>Nazwa Kursu</td>
+                            <td>Wprowadzono ocenę dla studenta X</td>
+                            <td>@DateTime.Now.ToShortDateString()</td>
+                        </tr>
+                        <!-- Dodaj więcej wierszy dynamicznie w razie potrzeby -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div> *@
+
+<!-- Opcjonalne style CSS -->
+<style>
+    h1 {
+        font-weight: 700;
+        margin-bottom: 30px;
+    }
+
+    h3 {
+        font-weight: 600;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .card {
+        border: 1px solid #ddd;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .card-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+    }
+
+    .table {
+        margin-top: 20px;
+    }
+</style>

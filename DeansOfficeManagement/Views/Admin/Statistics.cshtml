@@ -1,0 +1,66 @@
+﻿@using DeansOfficeManagement.Models.ViewModels
+@model StatisticsViewModel
+
+<h2>Ranking najlepszych studentów</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Pozycja</th>
+            <th>Imię i nazwisko</th>
+            <th>Średnia ważona</th>
+            <th>Liczba kursów</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.TopStudents != null && Model.TopStudents.Any())
+        {
+            int position = 1;
+            foreach (var student in Model.TopStudents)
+            {
+                <tr>
+                    <td>@position</td>
+                    <td>@student.StudentName</td>
+                    <td>@student.WeightedAverage.ToString("F2")</td>
+                    <td>@student.CourseCount</td>
+                </tr>
+                position++;
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="4">Brak danych do wyświetlenia.</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h2>Raport obciążenia dydaktycznego wykładowców</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Imię i nazwisko</th>
+            <th>Liczba kursów</th>
+            <th>Suma punktów ECTS</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.LecturerStatistics != null && Model.LecturerStatistics.Any())
+        {
+            foreach (var lecturer in Model.LecturerStatistics)
+            {
+                <tr>
+                    <td>@lecturer.LecturerName</td>
+                    <td>@lecturer.CourseCount</td>
+                    <td>@lecturer.TotalCredits</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="3">Brak danych do wyświetlenia.</td>
+            </tr>
+        }
+    </tbody>
+</table>

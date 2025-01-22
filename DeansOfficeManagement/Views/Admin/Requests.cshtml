@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Request>
+
+<h2>Wnioski studentów</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Student</th>
+            <th>Szczegóły wniosku</th>
+            <th>Status</th>
+            <th>Akcje</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var request in Model)
+
+        {
+            <tr>
+                <td>@request.Student?.FirstName</td>
+                <td>@request.Student?.LastName</td>
+
+                <td>@request.Description</td>
+                <td>@request.Status</td>
+                <td>
+                    <form asp-action="UpdateRequestStatus" method="post" style="display:inline">
+                        <input type="hidden" name="requestId" value="@request.RequestId" />
+                        <input type="hidden" name="status" value="Zaakceptowany" />
+                        <button type="submit" class="btn btn-sm btn-success">Zatwierdź</button>
+                    </form>
+                    <form asp-action="UpdateRequestStatus" method="post" style="display:inline">
+                        <input type="hidden" name="requestId" value="@request.RequestId" />
+                        <input type="hidden" name="status" value="Odrzucony" />
+                        <button type="submit" class="btn btn-sm btn-danger">Odrzuć</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

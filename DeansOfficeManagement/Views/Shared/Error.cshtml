@@ -1,0 +1,26 @@
+﻿@model DeansOfficeManagement.Models.ViewModels.ErrorViewModel
+@{
+    ViewData["Title"] = "Błąd";
+}
+
+<h1 class="text-danger">Błąd.</h1>
+<h2 class="text-danger">Wystąpił błąd podczas przetwarzania żądania.</h2>
+
+@if (Model.ShowRequestId)
+
+{
+    <p>
+        <strong>ID żądania:</strong> <code>@Model.RequestId</code>
+    </p>
+}
+
+<h3>Tryb deweloperski</h3>
+<p>
+    Przełączenie na <strong>Tryb deweloperski</strong> umożliwi wyświetlenie bardziej szczegółowych informacji o błędzie, który wystąpił.
+</p>
+<p>
+    <strong>Tryb deweloperski nie powinien być włączony w aplikacjach wdrożonych na środowisko produkcyjne.</strong>
+    Może to skutkować wyświetleniem wrażliwych informacji o wyjątkach użytkownikom końcowym.
+    Do lokalnego debugowania włącz <strong>Tryb deweloperski</strong>, ustawiając zmienną środowiskową <strong>ASPNETCORE_ENVIRONMENT</strong> na <strong>Development</strong>
+    i ponownie uruchamiając aplikację.
+</p>

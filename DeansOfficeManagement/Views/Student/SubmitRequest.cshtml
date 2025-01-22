@@ -1,0 +1,47 @@
+﻿@model DeansOfficeManagement.Models.ViewModels.SubmitRequestViewModel
+
+@{
+    ViewData["Title"] = "Złóż Wniosek";
+}
+
+<h2>Złóż Wniosek</h2>
+
+@if (TempData["SuccessMessage"] != null)
+
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+<form asp-action="SubmitRequest" method="post">
+    <div class="form-group">
+       
+        <label asp-for="RequestType">Rodzaj Wniosku</label>
+        <select asp-for="RequestType" class="form-control">
+            <option value="">Wybierz rodzaj wniosku</option>
+            <option value="Urlop Dziekański">Urlop Dziekański</option>
+            <option value="Zmiana Programu Studió">Zmiana Programu Studiów</option>
+            <option value="Przedłużenie Egzaminu">Przedłużenie Egzaminu</option>
+            <option value="Stypendium naukowe">Stypendium naukowe</option>
+            <option value="Stypendium socjaln">Stypendium socjalne</option>
+            <option value="Inny">Inny</option>
+            <!-- Dodaj więcej rodzajów wniosków w razie potrzeby -->
+        </select>
+        <span asp-validation-for="RequestType" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Description">Opis</label>
+        <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Złóż wniosek</button>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

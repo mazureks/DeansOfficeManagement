@@ -1,0 +1,43 @@
+﻿@model IEnumerable<CourseRegistration>
+
+<h2>Rejestracje kursów</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Student</th>
+            <th>Kurs</th>
+            <th>Status</th>
+            <th>Akcje</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var registration in Model)
+
+        {
+            <tr>
+                <!-- Dodano wyświetlanie imienia i nazwiska studenta -->
+                <td>@registration?.Student?.FirstName @registration?.Student?.LastName</td>
+                <td>@registration?.Course?.CourseName</td>
+                <td>@registration?.Status</td>
+                <td>
+                    <form asp-action="UpdateRegistrationStatus" method="post" style="display:inline">
+                        <input type="hidden" name="registrationId" value="@registration?.CourseRegistrationId" />
+                        <input type="hidden" name="courseId" value="@registration?.Course?.CourseId" />
+                        <input type="hidden" name="studentId" value="@registration?.Student?.Id" />
+                        <input type="hidden" name="status" value="Zaakceptowany" />
+                        <button type="submit" class="btn btn-sm btn-success">Zatwierdź</button>
+                    </form>
+                    <form asp-action="UpdateRegistrationStatus" method="post" style="display:inline">
+                        <input type="hidden" name="registrationId" value="@registration?.CourseRegistrationId" />
+                        <input type="hidden" name="courseId" value="@registration?.Course?.CourseId" />
+                        <input type="hidden" name="studentId" value="@registration?.Student?.Id" />
+                        <input type="hidden" name="status" value="Odrzucony" />
+                        <button type="submit" class="btn btn-sm btn-danger">Odrzuć</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
